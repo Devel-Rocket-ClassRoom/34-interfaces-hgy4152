@@ -23,8 +23,10 @@ class Monster : IDefender, IAttacker
 
     public void Attack(IDefender target)
     {
-        Console.Write($"{Name}(이/가) ");
+        //Console.Write($"{Name}(이/가) ");
         target.TakeDamage(AttackPower);
+        Console.WriteLine($"{Name}(이/가) {target.ToString()}에게 {AttackPower} 대미지! ({target} HP:{target.CurrentHp}/{target.MaxHp})");
+
     }
 
     public void TakeDamage(int damage)
@@ -40,7 +42,13 @@ class Monster : IDefender, IAttacker
             CurrentHp = 0;
         
         }
+        
+        
+        //Console.WriteLine($" {Name}에게 {damage} 대미지! ({Name} HP:{CurrentHp}/{MaxHp})");
+    }
 
-        Console.WriteLine($" {Name}에게 {damage} 대미지! ({Name} HP:{CurrentHp}/{MaxHp})");
+    public override string ToString()
+    {
+        return Name;
     }
 }

@@ -18,8 +18,11 @@ class Character : IAttacker, IDefender
 
     public void Attack(IDefender target)
     {
-        Console.Write($"{Name}(이/가) ");
+        //Console.Write($"{Name}(이/가) ");
         target.TakeDamage(AttackPower);
+        Console.WriteLine($"{Name}(이/가) {target.ToString()}에게 {AttackPower} 대미지! ({target} HP:{target.CurrentHp}/{target.MaxHp})");
+        // target is Monster 같은 방향도 있음.
+        // 근데 그러면 클래스 종류별로 캐스팅 해줘야해서 별론듯
     }
 
     public void TakeDamage(int damage) 
@@ -34,7 +37,12 @@ class Character : IAttacker, IDefender
             CurrentHp = 0;
 
         }
-        Console.WriteLine($" {Name}에게 {damage} 대미지! ({Name} HP:{CurrentHp}/{MaxHp})");
+        //Console.WriteLine($" {Name}에게 {damage} 대미지! ({Name} HP:{CurrentHp}/{MaxHp})");
 
+    }
+
+    public override string ToString()
+    {
+        return Name;
     }
 }
